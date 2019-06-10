@@ -1,0 +1,1114 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+<script src="../../../../lib/jquery/index.js"></script>
+<script src="../../../../lib/audio/audio.js"></script>
+<script src="../../../../js/myJs.js"></script>
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.jpg?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.jpg?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.jpg?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/favicon.jpg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="H5之JS操作DOM元素及提供的接口,">
+
+
+
+
+
+
+
+
+  <meta property="fb:admins" content="<user_id>">
+  <meta property="fb:app_id" content="<app_id>">
+
+
+
+<meta name="description" content="H5是前端必会的基础">
+<meta name="keywords" content="H5之JS操作DOM元素及提供的接口">
+<meta property="og:type" content="article">
+<meta property="og:title" content="H5之JS操作DOM元素及提供的接口">
+<meta property="og:url" content="http://yoursite.com/2019/01/02/H5之JS操作DOM元素及提供的接口/index.html">
+<meta property="og:site_name" content="摆渡丶">
+<meta property="og:description" content="H5是前端必会的基础">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-01-04T08:00:17.671Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="H5之JS操作DOM元素及提供的接口">
+<meta name="twitter:description" content="H5是前端必会的基础">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":true,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/01/02/H5之JS操作DOM元素及提供的接口/">
+
+
+
+
+  <title>H5之JS操作DOM元素及提供的接口 | 摆渡丶</title>
+  
+<script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '<app_id>',
+      xfbml      : true,
+      version    : 'v2.10'
+    });
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "//connect.facebook.net/zh_Hans/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script>
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+  <div class="container-box">
+    
+    
+      
+    
+
+    <div class="container sidebar-position-left page-post-detail">
+      <div class="headband"></div>
+
+      <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+        <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">摆渡丶</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      <!--副标题
+      
+        <h1 class="site-subtitle" itemprop="description"></h1>
+      
+      -->
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+        <div class="header-introduce">
+          
+            
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel" style="opacity:0;transform:translateY(200px)">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/me.jpg" alt="Jen-gui Chow">
+            
+              <p class="site-author-name" itemprop="name">Jen-gui Chow</p>
+              <p class="site-description motion-element" itemprop="description">对与错何以&nbsp;&nbsp;|&nbsp;&nbsp;浓绿万枝红一点，动人春色不须多</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/zhourengui" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i></a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://stackoverflow.com/users/10759030/zhourengui" target="_blank" title="StackOverflow">
+                      
+                        <i class="fa fa-fw fa-stack-overflow"></i></a>
+                  </span>
+                
+            </div>
+          
+          
+          
+          
+          
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#H5新增JS选择元素的方法"><span class="nav-number">1.</span> <span class="nav-text">H5新增JS选择元素的方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#H5新增表单事件"><span class="nav-number">2.</span> <span class="nav-text">H5新增表单事件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#oninput"><span class="nav-number">2.1.</span> <span class="nav-text">oninput</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#oninvalid"><span class="nav-number">2.2.</span> <span class="nav-text">oninvalid</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#H5新增JS对calssList的操作"><span class="nav-number">3.</span> <span class="nav-text">H5新增JS对calssList的操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#add"><span class="nav-number">3.1.</span> <span class="nav-text">add()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#item"><span class="nav-number">3.2.</span> <span class="nav-text">item()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#remove"><span class="nav-number">3.3.</span> <span class="nav-text">remove()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#toggle"><span class="nav-number">3.4.</span> <span class="nav-text">toggle()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#contains"><span class="nav-number">3.5.</span> <span class="nav-text">contains()</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#H5新增自定义属性"><span class="nav-number">4.</span> <span class="nav-text">H5新增自定义属性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#H5提供的API"><span class="nav-number">5.</span> <span class="nav-text">H5提供的API</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#网络API"><span class="nav-number">5.1.</span> <span class="nav-text">网络API</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#全屏API"><span class="nav-number">5.2.</span> <span class="nav-text">全屏API</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#读取文件的API"><span class="nav-number">5.3.</span> <span class="nav-text">读取文件的API</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#拖拽API"><span class="nav-number">5.4.</span> <span class="nav-text">拖拽API</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#地理位置API"><span class="nav-number">5.5.</span> <span class="nav-text">地理位置API</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#本地存储localStorage"><span class="nav-number">6.</span> <span class="nav-text">本地存储localStorage</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Web存储sessionStorage"><span class="nav-number">7.</span> <span class="nav-text">Web存储sessionStorage</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#WebSQL"><span class="nav-number">8.</span> <span class="nav-text">WebSQL</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#对象接口"><span class="nav-number">8.1.</span> <span class="nav-text">对象接口</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#操作的步骤"><span class="nav-number">8.2.</span> <span class="nav-text">操作的步骤</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#打开数据库"><span class="nav-number">8.2.1.</span> <span class="nav-text">打开数据库</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#error-事件"><span class="nav-number">8.2.1.1.</span> <span class="nav-text">error 事件</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#success-事件"><span class="nav-number">8.2.1.2.</span> <span class="nav-text">success 事件</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#upgradeneeded-事件"><span class="nav-number">8.2.2.</span> <span class="nav-text">upgradeneeded 事件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#新建数据库"><span class="nav-number">8.2.3.</span> <span class="nav-text">新建数据库</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#新增数据"><span class="nav-number">8.2.4.</span> <span class="nav-text">新增数据</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#读取数据"><span class="nav-number">8.2.5.</span> <span class="nav-text">读取数据</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#遍历数据"><span class="nav-number">8.2.6.</span> <span class="nav-text">遍历数据</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#更新数据"><span class="nav-number">8.2.7.</span> <span class="nav-text">更新数据</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#删除数据"><span class="nav-number">8.2.8.</span> <span class="nav-text">删除数据</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#使用索引"><span class="nav-number">8.2.9.</span> <span class="nav-text">使用索引</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+      
+
+    </div>
+  </aside>
+
+
+          
+        </div>
+      </header>
+      <div class="main-footer">
+        <main class="main">
+          <div class="main-inner">
+            <div class="content-wrap">
+              <div id="content" class="content">
+                
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block" style="opacity:0.3;transform:translateX(1000px)">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/02/H5之JS操作DOM元素及提供的接口/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jen-gui Chow">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/me.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="摆渡丶">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+              
+              
+              <a class="post-title-link post-title-link-external" target="_blank" href="/2019/01/02/H5之JS操作DOM元素及提供的接口/#more" itemprop="url">
+                H5之JS操作DOM元素及提供的接口
+                <i class="fa fa-external-link"></i>
+              </a>
+            </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-02T11:31:14+08:00">
+                2019-01-02
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2019-01-04T16:00:17+08:00">
+                2019-01-04
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/H5/" itemprop="url" rel="index">
+                    <span itemprop="name">H5</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/01/02/H5之JS操作DOM元素及提供的接口/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count gitment-comments-count" data-xid="/2019/01/02/H5之JS操作DOM元素及提供的接口/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  3.4k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  15
+                </span>
+              
+            </div>
+          
+
+          
+              <div class="post-description">
+                  H5是前端必会的基础
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="H5新增JS选择元素的方法"><a href="#H5新增JS选择元素的方法" class="headerlink" title="H5新增JS选择元素的方法"></a>H5新增JS选择元素的方法</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">id</span>=<span class="string">"demo"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="javascript">  <span class="comment">// 选择的是一个元素 不是一个集合</span></span></span><br><span class="line"><span class="javascript">  <span class="keyword">var</span> input = <span class="built_in">document</span>.querySelector(<span class="string">"#demo"</span>)</span></span><br><span class="line"><span class="xml">  // console.log(input) =&gt; <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">id</span>=<span class="string">"demo"</span>&gt;</span></span></span><br><span class="line"><span class="javascript">  <span class="comment">// 如果想要选择一个集合</span></span></span><br><span class="line"><span class="javascript">  <span class="keyword">var</span> input = <span class="built_in">document</span>.querySelectorAll(<span class="string">"input"</span>)</span></span><br><span class="line"><span class="javascript">  <span class="comment">// console.log(input) =&gt; NodeList [input#demo]</span></span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="H5新增表单事件"><a href="#H5新增表单事件" class="headerlink" title="H5新增表单事件"></a>H5新增表单事件</h2><h3 id="oninput"><a href="#oninput" class="headerlink" title="oninput"></a>oninput</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">id</span>=<span class="string">"demo"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="javascript">  <span class="comment">// oninput方法 当当前的文本框的内容发生变化的时候就会触发 类似onchange方法</span></span></span><br><span class="line"><span class="javascript">  <span class="built_in">document</span>.querySelector(<span class="string">"#demo"</span>).oninput = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span></span><br><span class="line"><span class="javascript">    <span class="built_in">console</span>.log(<span class="string">"文本的内容发生变化了"</span>)</span></span><br><span class="line"><span class="undefined">  &#125;</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="oninvalid"><a href="#oninvalid" class="headerlink" title="oninvalid"></a>oninvalid</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">""</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"email"</span> <span class="attr">id</span>=<span class="string">"demo"</span> /&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"submit"</span> <span class="attr">value</span>=<span class="string">"提交"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="javascript">  <span class="comment">// 验证不通过时触发 </span></span></span><br><span class="line"><span class="javascript">  <span class="built_in">document</span>.querySelector(<span class="string">"#demo"</span>).oninvalid = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">  <span class="comment">// 当验证不通过的时候显示的提示信息</span></span></span><br><span class="line"><span class="javascript">    <span class="keyword">this</span>.setCustomValidity(<span class="string">"请输入正确的邮箱"</span>)</span></span><br><span class="line"><span class="undefined">  &#125;</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="H5新增JS对calssList的操作"><a href="#H5新增JS对calssList的操作" class="headerlink" title="H5新增JS对calssList的操作"></a>H5新增JS对calssList的操作</h2><h3 id="add"><a href="#add" class="headerlink" title="add()"></a>add()</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 给某个dom元素添加red的类</span></span><br><span class="line">dom.classList.add(<span class="string">"red"</span>)</span><br></pre></td></tr></table></figure>
+<h3 id="item"><a href="#item" class="headerlink" title="item()"></a>item()</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 获取元素的类名 index是索引</span></span><br><span class="line">dom.classList.item(index)</span><br></pre></td></tr></table></figure>
+<h3 id="remove"><a href="#remove" class="headerlink" title="remove()"></a>remove()</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 移除某个类样式</span></span><br><span class="line">dom.classList.remove(<span class="string">"red"</span>)</span><br></pre></td></tr></table></figure>
+<h3 id="toggle"><a href="#toggle" class="headerlink" title="toggle()"></a>toggle()</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// red类样式的开关 当元素有red样式的时候 就会移除red样式</span></span><br><span class="line">dom.classList.toggle(<span class="string">"red"</span>)</span><br></pre></td></tr></table></figure>
+<h3 id="contains"><a href="#contains" class="headerlink" title="contains()"></a>contains()</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 判断是否有red样式 返回布尔类型</span></span><br><span class="line">dom.classList.contains(<span class="string">"red"</span>)</span><br></pre></td></tr></table></figure>
+<h2 id="H5新增自定义属性"><a href="#H5新增自定义属性" class="headerlink" title="H5新增自定义属性"></a>H5新增自定义属性</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">span</span> <span class="attr">data-index-value</span>=<span class="string">"1"</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="javascript">  <span class="comment">// 在获取的时候一定不要出现index-value的东西 写成小驼峰的形式 前面的data不用写</span></span></span><br><span class="line"><span class="javascript">  <span class="built_in">console</span>.log(<span class="built_in">document</span>.getElementsByTagName(<span class="string">"span"</span>)[<span class="number">0</span>].dataset[<span class="string">"indexValue"</span>]) <span class="comment">// 1</span></span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="H5提供的API"><a href="#H5提供的API" class="headerlink" title="H5提供的API"></a>H5提供的API</h2><h3 id="网络API"><a href="#网络API" class="headerlink" title="网络API"></a>网络API</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 网络接通时触发</span></span><br><span class="line"><span class="built_in">window</span>.addEventListener(<span class="string">"online"</span>,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;) </span><br><span class="line"><span class="comment">// 网络断开时触发</span></span><br><span class="line"><span class="built_in">window</span>.addEventListener(<span class="string">"offline"</span>,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;)</span><br></pre></td></tr></table></figure>
+<h3 id="全屏API"><a href="#全屏API" class="headerlink" title="全屏API"></a>全屏API</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"1.jpg"</span> <span class="attr">alt</span>=<span class="string">""</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"button"</span> <span class="attr">name</span>=<span class="string">""</span> <span class="attr">id</span>=<span class="string">"full"</span> <span class="attr">value</span>=<span class="string">"全屏"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"button"</span> <span class="attr">name</span>=<span class="string">""</span> <span class="attr">id</span>=<span class="string">"cancelFull"</span> <span class="attr">value</span>=<span class="string">"退出全屏"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"button"</span> <span class="attr">name</span>=<span class="string">""</span> <span class="attr">id</span>=<span class="string">"isFull"</span> <span class="attr">value</span>=<span class="string">"是否全屏"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="undefined">  /*</span></span><br><span class="line"><span class="undefined">    全屏操作的主要方法和属性</span></span><br><span class="line"><span class="undefined">    1.requestFullScreen()  开启全屏</span></span><br><span class="line"><span class="undefined">    不同的浏览器需要添加不同的前缀</span></span><br><span class="line"><span class="undefined">    chromr:webkit  firefox:moz  ie:ms opera:o</span></span><br><span class="line"><span class="javascript">    <span class="number">2.</span>cancelFullScreen()  退出全屏  也需要添加前缀  退出全屏只能用<span class="built_in">document</span></span></span><br><span class="line"><span class="undefined">    3.fullScreenElement 是否全屏状态</span></span><br><span class="line"><span class="undefined">  */</span></span><br><span class="line"><span class="javascript">  <span class="comment">// 下面是一个全屏的案例</span></span></span><br><span class="line"><span class="javascript">	<span class="built_in">window</span>.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span></span><br><span class="line"><span class="javascript">		<span class="keyword">var</span> div = <span class="built_in">document</span>.querySelector(<span class="string">'div'</span>);</span></span><br><span class="line"><span class="javascript">		<span class="comment">//全屏操作</span></span></span><br><span class="line"><span class="javascript">		<span class="built_in">document</span>.querySelector(<span class="string">'#full'</span>).onclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span></span><br><span class="line"><span class="javascript">			<span class="comment">// div.webkitRequestFullScreen();//谷歌</span></span></span><br><span class="line"><span class="javascript">			<span class="comment">// div.mozRequestFullScreen();//火狐</span></span></span><br><span class="line"><span class="javascript">			<span class="keyword">if</span>(div.requestFullScreen)&#123;</span></span><br><span class="line"><span class="undefined">				div.requestFullScreen();</span></span><br><span class="line"><span class="javascript">			&#125;<span class="keyword">else</span> <span class="keyword">if</span>(div.webkitRequestFullScreen)&#123;</span></span><br><span class="line"><span class="undefined">				div.webkitRequestFullScreen()</span></span><br><span class="line"><span class="javascript">			&#125;<span class="keyword">else</span> <span class="keyword">if</span>(div.mozRequestFullScreen)&#123;</span></span><br><span class="line"><span class="undefined">				div.mozRequestFullScreen();</span></span><br><span class="line"><span class="javascript">			&#125;<span class="keyword">else</span> <span class="keyword">if</span>(div.msRequestFullScreen)&#123;</span></span><br><span class="line"><span class="undefined">				div.msRequestFullScreen();</span></span><br><span class="line"><span class="javascript">			&#125;<span class="keyword">else</span> <span class="keyword">if</span>(div.oRequestFullScreen)&#123;</span></span><br><span class="line"><span class="undefined">				div.oRequestFullScreen();</span></span><br><span class="line"><span class="undefined">			&#125;</span></span><br><span class="line"><span class="undefined">		&#125;</span></span><br><span class="line"><span class="javascript">		<span class="comment">//退出全屏</span></span></span><br><span class="line"><span class="javascript">    <span class="built_in">document</span>.querySelector(<span class="string">"#cancelFull"</span>).onclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span></span><br><span class="line"><span class="javascript">    <span class="keyword">if</span>(<span class="built_in">document</span>.cancleFullScreen)&#123;</span></span><br><span class="line"><span class="javascript">      <span class="built_in">document</span>.cancleFullScreen();</span></span><br><span class="line"><span class="javascript">    &#125;<span class="keyword">else</span> <span class="keyword">if</span>(<span class="built_in">document</span>.webkitCancelFullScreen)&#123;</span></span><br><span class="line"><span class="javascript">      <span class="built_in">console</span>.log(<span class="string">"111"</span>);</span></span><br><span class="line"><span class="javascript">      <span class="built_in">document</span>.webkitCancelFullScreen();</span></span><br><span class="line"><span class="javascript">    &#125;<span class="keyword">else</span> <span class="keyword">if</span>(<span class="built_in">document</span>.mozCancelFullScreen)&#123;</span></span><br><span class="line"><span class="javascript">      <span class="built_in">document</span>.mozCancelFullScreen();</span></span><br><span class="line"><span class="javascript">    &#125;<span class="keyword">else</span> <span class="keyword">if</span>(<span class="built_in">document</span>.msCancelFullScreen)&#123;</span></span><br><span class="line"><span class="javascript">      <span class="built_in">document</span>.msCancelFullScreen();</span></span><br><span class="line"><span class="javascript">    &#125;<span class="keyword">else</span> <span class="keyword">if</span>(<span class="built_in">document</span>.oCancelFullScreen)&#123;</span></span><br><span class="line"><span class="javascript">      <span class="built_in">document</span>.oCancelFullScreen();</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="javascript">    <span class="comment">//判断是否为全屏的状态 </span></span></span><br><span class="line"><span class="javascript">		<span class="built_in">document</span>.querySelector(<span class="string">"#isFull"</span>).onclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span></span><br><span class="line"><span class="javascript">		 	<span class="comment">// 两个细节  使用document判断 能力测试</span></span></span><br><span class="line"><span class="javascript">		 	<span class="comment">// 最大的细节  只有firefox火狐的screen的S是大写    firefox是最符合h5的规范</span></span></span><br><span class="line"><span class="javascript">		 	<span class="keyword">if</span>(<span class="built_in">document</span>.fullscreenElement || <span class="built_in">document</span>.webitFullscreenElement || <span class="built_in">document</span>.mozFullScreenElement || <span class="built_in">document</span>.msFullscreenElement || <span class="built_in">document</span>.oFullscreenElement)&#123;</span></span><br><span class="line"><span class="javascript">		 		alert(<span class="string">"ture"</span>);</span></span><br><span class="line"><span class="javascript">		 	&#125;<span class="keyword">else</span>&#123;</span></span><br><span class="line"><span class="javascript">		 		alert(<span class="string">"false"</span>);</span></span><br><span class="line"><span class="undefined">		 	&#125;</span></span><br><span class="line"><span class="undefined">		&#125;</span></span><br><span class="line"><span class="undefined">	&#125;</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="读取文件的API"><a href="#读取文件的API" class="headerlink" title="读取文件的API"></a>读取文件的API</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> reader = <span class="keyword">new</span> FileReader()</span><br><span class="line">reader.readAsDataURL(dom.files[<span class="number">0</span>]) <span class="comment">// 一般读取图片</span></span><br><span class="line">reader.readAsText(dom.files[<span class="number">0</span>]) <span class="comment">// 读取文本文件</span></span><br><span class="line">reader.readAsBinaryString(dom.files[<span class="number">0</span>]) <span class="comment">// 读取任意文件 返回二进制数据 进行数据的存储</span></span><br><span class="line"><span class="comment">// onabort:读取文件中断片时触发</span></span><br><span class="line"><span class="comment">// onerror:读取错误时触发</span></span><br><span class="line"><span class="comment">// onload:文件读取成功完成时触发</span></span><br><span class="line"><span class="comment">// onloadend:读取完成时触发，无论成功还是失败</span></span><br><span class="line"><span class="comment">// onloadstart:开始读取时触发</span></span><br><span class="line"><span class="comment">// onprogress:读取文件过程中持续触发</span></span><br><span class="line">reader.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(reader.result)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="拖拽API"><a href="#拖拽API" class="headerlink" title="拖拽API"></a>拖拽API</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 使用下面的案例完美剖析拖拽API --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">"text/css"</span> <span class="attr">media</span>=<span class="string">"screen"</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="undefined">	div&#123;</span></span><br><span class="line"><span class="undefined">		width:300px;</span></span><br><span class="line"><span class="undefined">		height:200px;</span></span><br><span class="line"><span class="undefined">		float:left;</span></span><br><span class="line"><span class="undefined">		margin-left: 30px;</span></span><br><span class="line"><span class="undefined">	&#125;</span></span><br><span class="line"><span class="undefined">	#div1&#123;</span></span><br><span class="line"><span class="undefined">		border:1px solid pink;</span></span><br><span class="line"><span class="undefined">	&#125;</span></span><br><span class="line"><span class="undefined">	#div2&#123;</span></span><br><span class="line"><span class="undefined">		border:1px solid deeppink;</span></span><br><span class="line"><span class="undefined">	&#125;</span></span><br><span class="line"><span class="undefined">	#div3&#123;</span></span><br><span class="line"><span class="undefined">		border:1px solid hotpink;</span></span><br><span class="line"><span class="undefined">	&#125;</span></span><br><span class="line"><span class="undefined">	p&#123;</span></span><br><span class="line"><span class="undefined">		background-color: yellow;</span></span><br><span class="line"><span class="undefined">	&#125;</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 拖拽第一步就是给要拖拽的元素添加拖拽的属性 draggable="true" 图片和超链接默认可以拖拽 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"div1"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">p</span> <span class="attr">id</span>=<span class="string">"p"</span> <span class="attr">draggable</span>=<span class="string">"true"</span>&gt;</span>北京大学<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">p</span> <span class="attr">id</span>=<span class="string">"p1"</span> <span class="attr">draggable</span>=<span class="string">"true"</span>&gt;</span>清华大学<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">p</span> <span class="attr">id</span>=<span class="string">"p2"</span> <span class="attr">draggable</span>=<span class="string">"true"</span>&gt;</span>广州航海学院<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"div2"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"div3"</span>&gt;</span>	</span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="javascript">  <span class="comment">// 拖拽的事件分两类</span></span></span><br><span class="line"><span class="javascript">  <span class="comment">// 第一类 用于拖拽元素</span></span></span><br><span class="line"><span class="undefined">  /**</span></span><br><span class="line"><span class="undefined">      * ondrag       应用于拖拽元素 整个拖拽过程都会触发 持续触发</span></span><br><span class="line"><span class="undefined">      * ondragstart  应用于拖拽元素 当拖拽的时候会触发</span></span><br><span class="line"><span class="undefined">      * ondragleave  用于拖拽元素 当鼠标离开拖拽区域时触发</span></span><br><span class="line"><span class="undefined">      * ondragend    用于被拖拽的元素   当拖拽结束时调用</span></span><br><span class="line"><span class="undefined">  */</span></span><br><span class="line"><span class="javascript">  <span class="comment">// 第二类 用于拖拽到目标的容器</span></span></span><br><span class="line"><span class="undefined">  /**</span></span><br><span class="line"><span class="undefined">		 * ondragenter  应用于目标元素  当拖拽元素进入时调用</span></span><br><span class="line"><span class="undefined">		 * ondragover   应用于目标元素  当停留在目标元素上时调用</span></span><br><span class="line"><span class="undefined">		 * ondrop       应用于目标元素  当在目标元素上松开鼠标时调用</span></span><br><span class="line"><span class="undefined">		 * ondragleave  应用于目标元素  当鼠标离开目标时调用</span></span><br><span class="line"><span class="undefined">		 * </span></span><br><span class="line"><span class="undefined">		 */</span></span><br><span class="line"><span class="javascript">  <span class="built_in">window</span>.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span></span><br><span class="line"><span class="javascript">    <span class="comment">// 当拖拽的时候会触发</span></span></span><br><span class="line"><span class="javascript">    <span class="built_in">document</span>.ondragstart = <span class="function"><span class="keyword">function</span>(<span class="params">e</span>)</span>&#123;</span></span><br><span class="line"><span class="javascript">      <span class="comment">// 拖拽的时候设置拖拽元素的背景颜色</span></span></span><br><span class="line"><span class="javascript">      e.target.style.backgroundColor = <span class="string">'red'</span>;</span></span><br><span class="line"><span class="javascript">      <span class="comment">// 存储拖拽元素的属性 便于后面使用其他方法的时候知道拖拽的是哪个元素</span></span></span><br><span class="line"><span class="javascript">      e.dataTransfer.setData(<span class="string">'text/html'</span>,e.target.id);</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="javascript">      <span class="comment">// 拖拽结束的时候会触发</span></span></span><br><span class="line"><span class="javascript">    <span class="built_in">document</span>.ondragend = <span class="function"><span class="keyword">function</span>(<span class="params">e</span>)</span>&#123;</span></span><br><span class="line"><span class="javascript">      <span class="comment">// 拖拽结束的时候设置拖拽元素的背景颜色</span></span></span><br><span class="line"><span class="javascript">      e.target.style.backgroundColor = <span class="string">'yellow'</span>;</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="javascript">    <span class="comment">// 当在目标元素上松开鼠标时调用</span></span></span><br><span class="line"><span class="javascript">    <span class="built_in">document</span>.ondrop = <span class="function"><span class="keyword">function</span>(<span class="params">e</span>)</span>&#123;</span></span><br><span class="line"><span class="javascript">      <span class="comment">// 获取拖拽元素的id</span></span></span><br><span class="line"><span class="javascript">      <span class="keyword">var</span> id = e.dataTransfer.getData(<span class="string">'text/html'</span>);</span></span><br><span class="line"><span class="javascript">      <span class="comment">// 向容器添加拖拽的元素</span></span></span><br><span class="line"><span class="javascript">      e.target.appendChild(<span class="built_in">document</span>.querySelector(<span class="string">'#'</span>+id));</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="javascript">    <span class="comment">// 当停留在目标元素上时调用</span></span></span><br><span class="line"><span class="javascript">    <span class="built_in">document</span>.ondragover = <span class="function"><span class="keyword">function</span>(<span class="params">e</span>)</span>&#123;</span></span><br><span class="line"><span class="javascript">      <span class="comment">// 取消浏览器打的默认事件 在拖拽的时候 一样要取消浏览器的默认事件 并且是在ondargover的事件中添加</span></span></span><br><span class="line"><span class="undefined">      e.preventDefault();</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="undefined">  &#125;</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="地理位置API"><a href="#地理位置API" class="headerlink" title="地理位置API"></a>地理位置API</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 使用getCurrentPosition的方法可以获取您的位置的地理信息 例如 经度 纬度 海拔高度</span></span><br><span class="line"><span class="keyword">if</span>(navigator.geolocation)&#123;</span><br><span class="line">  navigator.geolocation.getCurrentPosition(<span class="function">(<span class="params">position</span>)=&gt;</span>&#123;</span><br><span class="line">    <span class="comment">// latitude 纬度  longitude 经度  accuracy海拔高度</span></span><br><span class="line">    <span class="keyword">var</span> latitude = position.coords.latitude</span><br><span class="line">    <span class="keyword">var</span> longitude = position.coords.longitude</span><br><span class="line">    <span class="keyword">var</span> accuracy = position.coords.accuracy</span><br><span class="line">  &#125;,(err)=&gt;&#123;</span><br><span class="line">    alert(err.message)</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="本地存储localStorage"><a href="#本地存储localStorage" class="headerlink" title="本地存储localStorage"></a>本地存储localStorage</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 注意的是value一定要是字符串</span></span><br><span class="line"><span class="comment">// 在使用localStotage的时候常用的方法</span></span><br><span class="line"><span class="comment">// 1.JSON.stringify(data) 将对象转化成字符串对象</span></span><br><span class="line"><span class="comment">// 2.JSON.parse(data) 将字符串对象转化成对象</span></span><br><span class="line"><span class="comment">// 存储数据</span></span><br><span class="line"><span class="built_in">window</span>.localStorage.setItem(<span class="string">"key"</span>,<span class="string">"value"</span>)</span><br><span class="line"><span class="comment">// 获取数据</span></span><br><span class="line"><span class="built_in">window</span>.localStorage.getItem(<span class="string">"key"</span>)</span><br><span class="line"><span class="comment">// 删除数据</span></span><br><span class="line"><span class="built_in">window</span>.localStorage.removeItem(<span class="string">"key"</span>)</span><br></pre></td></tr></table></figure>
+<h2 id="Web存储sessionStorage"><a href="#Web存储sessionStorage" class="headerlink" title="Web存储sessionStorage"></a>Web存储sessionStorage</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 使用下面的案例来说明sessionStorage --&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 这个数据本质存储在浏览器中(当前的页面)  生命周期为关闭当前网页 --&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- sessionStorage 作用存取数据到本地 容量为5m --&gt;</span>  </span><br><span class="line"><span class="comment">&lt;!-- setItem(key,value):以键值对的方式进行存储 --&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- getItem(key) 获取对应的值 --&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- removeItem(key) 根据key删除数据 --&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- clear  清空所有存储 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">name</span>=<span class="string">""</span> <span class="attr">id</span>=<span class="string">"username"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"button"</span> <span class="attr">value</span>=<span class="string">"设置数据"</span> <span class="attr">id</span>=<span class="string">"setData"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"button"</span> <span class="attr">value</span>=<span class="string">"获取数据"</span> <span class="attr">id</span>=<span class="string">"getData"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"button"</span> <span class="attr">value</span>=<span class="string">"删除数据"</span> <span class="attr">id</span>=<span class="string">"removeData"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="javascript">  <span class="built_in">document</span>.querySelector(<span class="string">'#setData'</span>).onclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span></span><br><span class="line"><span class="javascript">    <span class="keyword">var</span> username = <span class="built_in">document</span>.querySelector(<span class="string">"#username"</span>).value;</span></span><br><span class="line"><span class="javascript">    <span class="built_in">window</span>.sessionStorage.setItem(<span class="string">"username"</span>,username);</span></span><br><span class="line"><span class="undefined">  &#125;</span></span><br><span class="line"><span class="javascript">  <span class="comment">//如果数据找不到对应的key  返回的是null</span></span></span><br><span class="line"><span class="javascript">  <span class="built_in">document</span>.querySelector(<span class="string">"#getData"</span>).onclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span></span><br><span class="line"><span class="javascript">    <span class="keyword">var</span> username = <span class="built_in">window</span>.sessionStorage.getItem(<span class="string">'username'</span>);</span></span><br><span class="line"><span class="javascript">    <span class="built_in">console</span>.log(username);</span></span><br><span class="line"><span class="undefined">  &#125;</span></span><br><span class="line"><span class="javascript">  <span class="comment">//如果在删除的时候如果key不存在  不会报错 也不会删除数据</span></span></span><br><span class="line"><span class="javascript">  <span class="built_in">document</span>.querySelector(<span class="string">"#removeData"</span>).onclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span></span><br><span class="line"><span class="javascript">    <span class="built_in">window</span>.sessionStorage.removeItem(<span class="string">"username"</span>);</span></span><br><span class="line"><span class="undefined">  &#125;</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="WebSQL"><a href="#WebSQL" class="headerlink" title="WebSQL"></a>WebSQL</h2><p>IndexedDB 是一个比较复杂的 API，涉及不少概念。它把不同的实体，抽象成一个个对象接口。学习这个 API，就是学习它的各种对象接口。</p>
+<h3 id="对象接口"><a href="#对象接口" class="headerlink" title="对象接口"></a>对象接口</h3><ul>
+<li>数据库：IDBDatabase 对象</li>
+<li>对象仓库：IDBObjectStore 对象</li>
+<li>索引： IDBIndex 对象</li>
+<li>事务： IDBTransaction 对象</li>
+<li>操作请求：IDBRequest 对象</li>
+<li>指针： IDBCursor 对象</li>
+<li>主键集合：IDBKeyRange 对象</li>
+</ul>
+<h3 id="操作的步骤"><a href="#操作的步骤" class="headerlink" title="操作的步骤"></a>操作的步骤</h3><h4 id="打开数据库"><a href="#打开数据库" class="headerlink" title="打开数据库"></a>打开数据库</h4><p>使用 IndexedDB 的第一步是打开数据库，使用indexedDB.open()方法</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> request = <span class="built_in">window</span>.indexedDB.open(databaseName, version);</span><br></pre></td></tr></table></figure>
+<p>这个方法接受两个参数，第一个参数是字符串，表示数据库的名字。如果指定的数据库不存在，就会新建数据库。第二个参数是整数，表示数据库的版本。如果省略，打开已有数据库时，默认为当前版本；新建数据库时，默认为1。</p>
+<p>indexedDB.open()方法返回一个 IDBRequest 对象。这个对象通过三种事件error、success、upgradeneeded，处理打开数据库的操作结果。</p>
+<h5 id="error-事件"><a href="#error-事件" class="headerlink" title="error 事件"></a>error 事件</h5><p>error事件表示打开数据库失败。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">request.onerror = <span class="function"><span class="keyword">function</span> (<span class="params">event</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'数据库打开报错'</span>);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h5 id="success-事件"><a href="#success-事件" class="headerlink" title="success 事件"></a>success 事件</h5><p>success事件表示成功打开数据库。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> db;</span><br><span class="line">request.onsuccess = <span class="function"><span class="keyword">function</span> (<span class="params">event</span>) </span>&#123;</span><br><span class="line">  db = request.result;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'数据库打开成功'</span>);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>这时，通过request对象的result属性拿到数据库对象。</p>
+<h4 id="upgradeneeded-事件"><a href="#upgradeneeded-事件" class="headerlink" title="upgradeneeded 事件"></a>upgradeneeded 事件</h4><p>如果指定的版本号，大于数据库的实际版本号，就会发生数据库升级事件upgradeneeded。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> db;</span><br><span class="line">request.onupgradeneeded = <span class="function"><span class="keyword">function</span> (<span class="params">event</span>) </span>&#123;</span><br><span class="line">  db = event.target.result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这时通过事件对象的target.result属性，拿到数据库实例。</p>
+<h4 id="新建数据库"><a href="#新建数据库" class="headerlink" title="新建数据库"></a>新建数据库</h4><p>新建数据库与打开数据库是同一个操作。如果指定的数据库不存在，就会新建。不同之处在于，后续的操作主要在upgradeneeded事件的监听函数里面完成，因为这时版本从无到有，所以会触发这个事件。</p>
+<p>通常，新建数据库以后，第一件事是新建对象仓库（即新建表）。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">request.onupgradeneeded = <span class="function"><span class="keyword">function</span>(<span class="params">event</span>) </span>&#123;</span><br><span class="line">  db = event.target.result;</span><br><span class="line">  <span class="keyword">var</span> objectStore = db.createObjectStore(<span class="string">'person'</span>, &#123; <span class="attr">keyPath</span>: <span class="string">'id'</span> &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>上面代码中，数据库新建成功以后，新增一张叫做person的表格，主键是id。</p>
+<p>更好的写法是先判断一下，这张表格是否存在，如果不存在再新建。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">request.onupgradeneeded = <span class="function"><span class="keyword">function</span> (<span class="params">event</span>) </span>&#123;</span><br><span class="line">  db = event.target.result;</span><br><span class="line">  <span class="keyword">var</span> objectStore;</span><br><span class="line">  <span class="keyword">if</span> (!db.objectStoreNames.contains(<span class="string">'person'</span>)) &#123;</span><br><span class="line">    objectStore = db.createObjectStore(<span class="string">'person'</span>, &#123; <span class="attr">keyPath</span>: <span class="string">'id'</span> &#125;);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>主键（key）是默认建立索引的属性。比如，数据记录是{ id: 1, name: ‘张三’ }，那么id属性可以作为主键。主键也可以指定为下一层对象的属性，比如{ foo: { bar: ‘baz’ } }的foo.bar也可以指定为主键。</p>
+<p>如果数据记录里面没有合适作为主键的属性，那么可以让 IndexedDB 自动生成主键。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> objectStore = db.createObjectStore(</span><br><span class="line">  <span class="string">'person'</span>,</span><br><span class="line">  &#123; <span class="attr">autoIncrement</span>: <span class="literal">true</span> &#125;</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<p>上面代码中，指定主键为一个递增的整数。</p>
+<p>新建对象仓库以后，下一步可以新建索引。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">request.onupgradeneeded = <span class="function"><span class="keyword">function</span>(<span class="params">event</span>) </span>&#123;</span><br><span class="line">  db = event.target.result;</span><br><span class="line">  <span class="keyword">var</span> objectStore = db.createObjectStore(<span class="string">'person'</span>, &#123; <span class="attr">keyPath</span>: <span class="string">'id'</span> &#125;);</span><br><span class="line">  objectStore.createIndex(<span class="string">'name'</span>, <span class="string">'name'</span>, &#123; <span class="attr">unique</span>: <span class="literal">false</span> &#125;);</span><br><span class="line">  objectStore.createIndex(<span class="string">'email'</span>, <span class="string">'email'</span>, &#123; <span class="attr">unique</span>: <span class="literal">true</span> &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>上面代码中，IDBObject.createIndex()的三个参数分别为索引名称、索引所在的属性、配置对象（说明该属性是否包含重复的值）。</p>
+<h4 id="新增数据"><a href="#新增数据" class="headerlink" title="新增数据"></a>新增数据</h4><p>新增数据指的是向对象仓库写入数据记录。这需要通过事务完成。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">add</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> request = db.transaction([<span class="string">'person'</span>], <span class="string">'readwrite'</span>)</span><br><span class="line">    .objectStore(<span class="string">'person'</span>)</span><br><span class="line">    .add(&#123; <span class="attr">id</span>: <span class="number">1</span>, <span class="attr">name</span>: <span class="string">'张三'</span>, <span class="attr">age</span>: <span class="number">24</span>, <span class="attr">email</span>: <span class="string">'zhangsan@example.com'</span> &#125;);</span><br><span class="line"></span><br><span class="line">  request.onsuccess = <span class="function"><span class="keyword">function</span> (<span class="params">event</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'数据写入成功'</span>);</span><br><span class="line">  &#125;;</span><br><span class="line"></span><br><span class="line">  request.onerror = <span class="function"><span class="keyword">function</span> (<span class="params">event</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'数据写入失败'</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">add();</span><br></pre></td></tr></table></figure>
+<p>上面代码中，写入数据需要新建一个事务。新建时必须指定表格名称和操作模式（”只读”或”读写”）。新建事务以后，通过IDBTransaction.objectStore(name)方法，拿到 IDBObjectStore 对象，再通过表格对象的add()方法，向表格写入一条记录。</p>
+<p>写入操作是一个异步操作，通过监听连接对象的success事件和error事件，了解是否写入成功。</p>
+<h4 id="读取数据"><a href="#读取数据" class="headerlink" title="读取数据"></a>读取数据</h4><p>读取数据也是通过事务完成。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">read</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">   <span class="keyword">var</span> transaction = db.transaction([<span class="string">'person'</span>]);</span><br><span class="line">   <span class="keyword">var</span> objectStore = transaction.objectStore(<span class="string">'person'</span>);</span><br><span class="line">   <span class="keyword">var</span> request = objectStore.get(<span class="number">1</span>);</span><br><span class="line"></span><br><span class="line">   request.onerror = <span class="function"><span class="keyword">function</span>(<span class="params">event</span>) </span>&#123;</span><br><span class="line">     <span class="built_in">console</span>.log(<span class="string">'事务失败'</span>);</span><br><span class="line">   &#125;;</span><br><span class="line"></span><br><span class="line">   request.onsuccess = <span class="function"><span class="keyword">function</span>(<span class="params"> event</span>) </span>&#123;</span><br><span class="line">      <span class="keyword">if</span> (request.result) &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'Name: '</span> + request.result.name);</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'Age: '</span> + request.result.age);</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'Email: '</span> + request.result.email);</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'未获得数据记录'</span>);</span><br><span class="line">      &#125;</span><br><span class="line">   &#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">read();</span><br></pre></td></tr></table></figure>
+<p>上面代码中，objectStore.get()方法用于读取数据，参数是主键的值。</p>
+<h4 id="遍历数据"><a href="#遍历数据" class="headerlink" title="遍历数据"></a>遍历数据</h4><p>遍历数据表格的所有记录，要使用指针对象 IDBCursor。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">readAll</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> objectStore = db.transaction(<span class="string">'person'</span>).objectStore(<span class="string">'person'</span>);</span><br><span class="line"></span><br><span class="line">   objectStore.openCursor().onsuccess = <span class="function"><span class="keyword">function</span> (<span class="params">event</span>) </span>&#123;</span><br><span class="line">     <span class="keyword">var</span> cursor = event.target.result;</span><br><span class="line"></span><br><span class="line">     <span class="keyword">if</span> (cursor) &#123;</span><br><span class="line">       <span class="built_in">console</span>.log(<span class="string">'Id: '</span> + cursor.key);</span><br><span class="line">       <span class="built_in">console</span>.log(<span class="string">'Name: '</span> + cursor.value.name);</span><br><span class="line">       <span class="built_in">console</span>.log(<span class="string">'Age: '</span> + cursor.value.age);</span><br><span class="line">       <span class="built_in">console</span>.log(<span class="string">'Email: '</span> + cursor.value.email);</span><br><span class="line">       cursor.continue();</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">'没有更多数据了！'</span>);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br><span class="line">readAll();</span><br></pre></td></tr></table></figure>
+<p>上面代码中，新建指针对象的openCursor()方法是一个异步操作，所以要监听success事件。</p>
+<h4 id="更新数据"><a href="#更新数据" class="headerlink" title="更新数据"></a>更新数据</h4><p>更新数据要使用IDBObject.put()方法。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">update</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> request = db.transaction([<span class="string">'person'</span>], <span class="string">'readwrite'</span>)</span><br><span class="line">    .objectStore(<span class="string">'person'</span>)</span><br><span class="line">    .put(&#123; <span class="attr">id</span>: <span class="number">1</span>, <span class="attr">name</span>: <span class="string">'李四'</span>, <span class="attr">age</span>: <span class="number">35</span>, <span class="attr">email</span>: <span class="string">'lisi@example.com'</span> &#125;);</span><br><span class="line"></span><br><span class="line">  request.onsuccess = <span class="function"><span class="keyword">function</span> (<span class="params">event</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'数据更新成功'</span>);</span><br><span class="line">  &#125;;</span><br><span class="line"></span><br><span class="line">  request.onerror = <span class="function"><span class="keyword">function</span> (<span class="params">event</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'数据更新失败'</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">update();</span><br></pre></td></tr></table></figure>
+<p>上面代码中，put()方法自动更新了主键为1的记录。</p>
+<h4 id="删除数据"><a href="#删除数据" class="headerlink" title="删除数据"></a>删除数据</h4><p>IDBObjectStore.delete()方法用于删除记录。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">remove</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> request = db.transaction([<span class="string">'person'</span>], <span class="string">'readwrite'</span>)</span><br><span class="line">    .objectStore(<span class="string">'person'</span>)</span><br><span class="line">    .delete(<span class="number">1</span>);</span><br><span class="line"></span><br><span class="line">  request.onsuccess = <span class="function"><span class="keyword">function</span> (<span class="params">event</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'数据删除成功'</span>);</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">remove();</span><br></pre></td></tr></table></figure>
+<h4 id="使用索引"><a href="#使用索引" class="headerlink" title="使用索引"></a>使用索引</h4><p>索引的意义在于，可以让你搜索任意字段，也就是说从任意字段拿到数据记录。如果不建立索引，默认只能搜索主键（即从主键取值）。</p>
+<p>假定新建表格的时候，对name字段建立了索引。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">objectStore.createIndex(<span class="string">'name'</span>, <span class="string">'name'</span>, &#123; <span class="attr">unique</span>: <span class="literal">false</span> &#125;);</span><br></pre></td></tr></table></figure>
+<p>现在，就可以从name找到对应的数据记录了。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> transaction = db.transaction([<span class="string">'person'</span>], <span class="string">'readonly'</span>);</span><br><span class="line"><span class="keyword">var</span> store = transaction.objectStore(<span class="string">'person'</span>);</span><br><span class="line"><span class="keyword">var</span> index = store.index(<span class="string">'name'</span>);</span><br><span class="line"><span class="keyword">var</span> request = index.get(<span class="string">'李四'</span>);</span><br><span class="line"></span><br><span class="line">request.onsuccess = <span class="function"><span class="keyword">function</span> (<span class="params">e</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> result = e.target.result;</span><br><span class="line">  <span class="keyword">if</span> (result) &#123;</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>WebSQL内容来自阿里男神阮一峰的一片文章 <a href="http://www.ruanyifeng.com/blog/2018/07/indexeddb.html" target="_blank" rel="noopener">http://www.ruanyifeng.com/blog/2018/07/indexeddb.html</a></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    Jen-gui Chow
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://zrg15202041724.github.io/2019/01/02/H5之JS操作DOM元素及提供的接口/#more" title="H5之JS操作DOM元素及提供的接口">https://zrg15202041724.github.io/2019/01/02/H5之JS操作DOM元素及提供的接口/#more</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/H5之JS操作DOM元素及提供的接口/" rel="tag"># H5之JS操作DOM元素及提供的接口</a>
+          
+        </div>
+      
+
+      
+      
+        <div class="post-widgets">
+        
+
+        
+          <div class="social-like">
+            
+
+            
+              <div class="fb_like">
+                <div class="fb-like" data-layout="button_count" data-share="true"></div>
+              </div>
+            
+          </div>
+        
+
+        
+          
+            <span class="post-meta-divider">|</span>
+          
+          <div id="needsharebutton-postbottom">
+            <span class="btn">
+              <i class="fa fa-share-alt" aria-hidden="true"></i>
+            </span>
+          </div>
+        
+        </div>
+      
+      
+
+      
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/#more" rel="prev" title="CSS实现水平、垂直居中的N种方法">
+                CSS实现水平、垂直居中的N种方法 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+              </div>
+              
+
+
+              
+
+  
+    <div class="comments" id="comments">
+      
+        <div id="gitment-container"></div>
+      
+    </div>
+
+  
+
+
+
+            </div>
+          </div>
+        </main>
+
+        <footer id="footer" class="footer">
+          <div class="footer-inner">
+            <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jen-gui Chow</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">21.6k</span>
+  
+</div>
+
+
+
+
+
+
+
+            
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+            
+          </div>
+        </footer>
+      </div>
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+      
+        <div id="needsharebutton-float">
+          <span class="btn">
+            <i class="fa fa-share-alt" aria-hidden="true"></i>
+          </span>
+        </div>
+      
+    </div>
+    <div class="audio-box">
+        <div class="audio-container">
+            <div class="audio-cover"></div>
+            <div class="audio-view">
+                <h3 class="audio-title">未知歌曲</h3>
+                <div class="audio-body">
+                    <div class="audio-backs">
+                        <div class="audio-this-time">00:00</div>
+                        <div class="audio-count-time">00:00</div>
+                        <div class="audio-setbacks">
+                            <i class="audio-this-setbacks">
+								<span class="audio-backs-btn"></span>
+							</i>
+                            <span class="audio-cache-setbacks">
+							</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="audio-btn">
+                    <div class="audio-select">
+                        <div class="audio-prev"></div>
+                        <div class="audio-play"></div>
+                        <div class="audio-next"></div>
+                        <div class="audio-menu"></div>
+                        <div class="audio-volume"></div>
+                    </div>
+                    <div class="audio-set-volume">
+                        <div class="volume-box">
+                            <i><span></span></i>
+                        </div>
+                    </div>
+                    <div class="audio-list">
+                        <div class="audio-list-head">
+                            <p>☺随心听</p>
+                            <span class="menu-close">关闭</span>
+                        </div>
+                        <ul class="audio-inline">
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+    
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+    
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+    
+    
+    
+    
+<script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+  
+  <script>
+    $(function(){
+      $(".site-overview-wrap").css({
+        opacity:1,
+        transform:"translateY(0px)"
+      })
+      $(".post-block").css({
+        opacity:1,
+        transform:"translateX(0px)"
+      })
+      if(window.location.hash == "#more"){
+        $(".post-block").css("height","100%").css("margin","40px 0")
+        $(".sidebar-toggle").css("display","none")
+      }
+    })
+  </script>
+
+
+    
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+    
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+
+
+    
+
+    
+
+    
+
+    
+  
+  
+  <link rel="stylesheet" href="/lib/needsharebutton/needsharebutton.css">
+
+  
+  
+  <script src="/lib/needsharebutton/needsharebutton.js"></script>
+
+  <script>
+    
+      pbOptions = {};
+      
+          pbOptions.iconStyle = "box";
+      
+          pbOptions.boxForm = "horizontal";
+      
+          pbOptions.position = "bottomCenter";
+      
+          pbOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-postbottom', pbOptions);
+    
+    
+      flOptions = {};
+      
+          flOptions.iconStyle = "box";
+      
+          flOptions.boxForm = "horizontal";
+      
+          flOptions.position = "middleRight";
+      
+          flOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-float', flOptions);
+    
+  </script>
+
+    
+
+    
+
+    
+  <script type="text/javascript" src="/js/src/js.cookie.js?v=5.1.4"></script>
+  <script type="text/javascript" src="/js/src/scroll-cookie.js?v=5.1.4"></script>
+
+
+    
+
+  
+</body>
+</html>

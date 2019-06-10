@@ -1,0 +1,1123 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+<script src="../../../../lib/jquery/index.js"></script>
+<script src="../../../../lib/audio/audio.js"></script>
+<script src="../../../../js/myJs.js"></script>
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.jpg?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.jpg?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.jpg?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/favicon.jpg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="ES6介绍之处理异步回调地狱,">
+
+
+
+
+
+
+
+
+  <meta property="fb:admins" content="<user_id>">
+  <meta property="fb:app_id" content="<app_id>">
+
+
+
+<meta name="description" content="异步问题和回调地狱问题在我们开发中是一定会遇到的,ES6提供了3中方法来解决这类的问题">
+<meta name="keywords" content="ES6介绍之处理异步回调地狱">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ES6介绍之处理异步回调地狱">
+<meta property="og:url" content="http://yoursite.com/2019/01/05/ES6介绍之处理异步回调地狱/index.html">
+<meta property="og:site_name" content="摆渡丶">
+<meta property="og:description" content="异步问题和回调地狱问题在我们开发中是一定会遇到的,ES6提供了3中方法来解决这类的问题">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-01-05T10:55:35.531Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="ES6介绍之处理异步回调地狱">
+<meta name="twitter:description" content="异步问题和回调地狱问题在我们开发中是一定会遇到的,ES6提供了3中方法来解决这类的问题">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":true,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/01/05/ES6介绍之处理异步回调地狱/">
+
+
+
+
+  <title>ES6介绍之处理异步回调地狱 | 摆渡丶</title>
+  
+<script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '<app_id>',
+      xfbml      : true,
+      version    : 'v2.10'
+    });
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "//connect.facebook.net/zh_Hans/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script>
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+  <div class="container-box">
+    
+    
+      
+    
+
+    <div class="container sidebar-position-left page-post-detail">
+      <div class="headband"></div>
+
+      <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+        <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">摆渡丶</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      <!--副标题
+      
+        <h1 class="site-subtitle" itemprop="description"></h1>
+      
+      -->
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+        <div class="header-introduce">
+          
+            
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel" style="opacity:0;transform:translateY(200px)">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/me.jpg" alt="Jen-gui Chow">
+            
+              <p class="site-author-name" itemprop="name">Jen-gui Chow</p>
+              <p class="site-description motion-element" itemprop="description">对与错何以&nbsp;&nbsp;|&nbsp;&nbsp;浓绿万枝红一点，动人春色不须多</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/zhourengui" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i></a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://stackoverflow.com/users/10759030/zhourengui" target="_blank" title="StackOverflow">
+                      
+                        <i class="fa fa-fw fa-stack-overflow"></i></a>
+                  </span>
+                
+            </div>
+          
+          
+          
+          
+          
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Promise对象"><span class="nav-number">1.</span> <span class="nav-text">Promise对象</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Generator函数"><span class="nav-number">2.</span> <span class="nav-text">Generator函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#async函数"><span class="nav-number">3.</span> <span class="nav-text">async函数</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+      
+
+    </div>
+  </aside>
+
+
+          
+        </div>
+      </header>
+      <div class="main-footer">
+        <main class="main">
+          <div class="main-inner">
+            <div class="content-wrap">
+              <div id="content" class="content">
+                
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block" style="opacity:0.3;transform:translateX(1000px)">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/05/ES6介绍之处理异步回调地狱/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jen-gui Chow">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/me.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="摆渡丶">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+              
+              
+              <a class="post-title-link post-title-link-external" target="_blank" href="/2019/01/05/ES6介绍之处理异步回调地狱/#more" itemprop="url">
+                ES6介绍之处理异步回调地狱
+                <i class="fa fa-external-link"></i>
+              </a>
+            </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-05T18:32:12+08:00">
+                2019-01-05
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2019-01-05T18:55:35+08:00">
+                2019-01-05
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaScript/" itemprop="url" rel="index">
+                    <span itemprop="name">JavaScript</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/01/05/ES6介绍之处理异步回调地狱/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count gitment-comments-count" data-xid="/2019/01/05/ES6介绍之处理异步回调地狱/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1.4k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  5
+                </span>
+              
+            </div>
+          
+
+          
+              <div class="post-description">
+                  异步问题和回调地狱问题在我们开发中是一定会遇到的,ES6提供了3中方法来解决这类的问题
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="Promise对象"><a href="#Promise对象" class="headerlink" title="Promise对象"></a><code>Promise</code>对象</h2><ol>
+<li><code>Promise</code>对象 代表了将来要发生的事件(异步操作)</li>
+<li><code>Promise</code>对象 可以将异步操作以同步的流程执行,避免了回调地狱</li>
+<li><code>ES6</code>的<code>Promise</code>对象是一个构造函数 用来生成<code>promise</code>实例的</li>
+<li><code>Promise</code>对象有三个状态:</li>
+</ol>
+<ul>
+<li><code>pending</code> 初始化状态</li>
+<li><code>fullfilled</code> 成功状态</li>
+<li><code>rejected</code> 失败状态</li>
+</ul>
+<ol>
+<li>应用:</li>
+</ol>
+<ul>
+<li>使用Promise实现超时处理</li>
+<li>使用Promise可以封装处理回调地狱的问题<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 使用Promise封装Ajax的get请求</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">get</span>(<span class="params">url</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">// Promise定义时候的状态是pending的初始化状态</span></span><br><span class="line">    <span class="keyword">let</span> xhr = <span class="built_in">window</span>.XMLHttpRequest ? <span class="keyword">new</span> XMLHttpRequest() : <span class="keyword">new</span> ActionXObject(<span class="string">"MicrosoftXMLHTTP"</span>)</span><br><span class="line">    xhr.onreadystatechange = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">      <span class="keyword">if</span> (xhr.readyState == <span class="number">4</span>) &#123;</span><br><span class="line">        <span class="keyword">if</span> (xhr.status == <span class="number">200</span>) &#123;</span><br><span class="line">          <span class="comment">// Promise的状态 变为fullfilled成功状态</span></span><br><span class="line">          resolve(xhr.responseText)</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">          <span class="comment">// Promise的状态 变为rejected失败状态</span></span><br><span class="line">          reject(<span class="string">"请求发送失败"</span>)</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    xhr.open(<span class="string">"GET"</span>, url, <span class="literal">true</span>)</span><br><span class="line">    xhr.send()</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br><span class="line">get(<span class="string">"http://localhost:5000/getdata"</span>)</span><br><span class="line">  .then(<span class="function">(<span class="params">data</span>) =&gt;</span> &#123; <span class="comment">// 这里的第一个参数的回调函数 就是resolve函数</span></span><br><span class="line">    <span class="built_in">console</span>.log(data)</span><br><span class="line">    <span class="keyword">return</span> get(<span class="string">"http://localhost:5000/getotherdata"</span>)</span><br><span class="line">  &#125;, (err) =&gt; &#123; <span class="comment">// 这里的第二个参数的回调函数 就是rejected函数</span></span><br><span class="line">    <span class="built_in">console</span>.log(err)</span><br><span class="line">  &#125;)</span><br><span class="line">  .then(<span class="function">(<span class="params">data</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(data)</span><br><span class="line">  &#125;, (err) =&gt; &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(err)</span><br><span class="line">  &#125;)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>使用<code>Promise</code>封装的函数之后我们会发现我们从看的角度 完美的解决了回调地狱的问题 但是Promise的内部原理还是使用了回调函数 所以这种方法并没有完美的解决回调的问题 但是这种方法也是非常常用的 所以这个方法也是我们必须掌握的</p>
+<h2 id="Generator函数"><a href="#Generator函数" class="headerlink" title="Generator函数"></a><code>Generator</code>函数</h2><p>概念:</p>
+<ol>
+<li><code>ES6</code>提供的解决异步编程的方案之一</li>
+<li><code>Generator</code>函数是一个状态机,内部封装了不同状态的数据</li>
+<li>用来生成遍历器对象</li>
+<li>可以暂停函数(惰性求值),<code>yield</code>可以暂停,<code>next</code>方法可以启动,每次返回的是<code>yield</code>后的表达式结果<br>特点:</li>
+<li><code>function</code>与函数名之间有一个<code>*</code>号</li>
+<li>内部使用<code>yield</code>表达式来定义不同的状态</li>
+<li><code>generator</code>函数返回的是指针对象 不会执行函数内部逻辑</li>
+<li>调用<code>next</code>方法函数内部逻辑开始执行 遇到<code>yeild</code>表达式停止 返回{value : yiele后的表达式结果}</li>
+<li>再次调用<code>next</code>方法会从上一次停止时的yield出开始,直到最后</li>
+<li>yeild语句返回结果通常为undefined,当调用next方法时传参内容会作为启动yield语句的返回值</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Generator的基本使用</span></span><br><span class="line"><span class="function"><span class="keyword">function</span>* <span class="title">myGenerator</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">"开始执行"</span>)</span><br><span class="line">  <span class="keyword">let</span> ret = <span class="keyword">yield</span> <span class="string">"Hello World"</span> <span class="comment">// 默认返回的是undefined 但是当next的时候传递了参数 ret就等于next传递的参数</span></span><br><span class="line">  <span class="built_in">console</span>.log(ret) <span class="comment">// 嘿嘿嘿</span></span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">"暂停之后再次执行"</span>)</span><br><span class="line">  <span class="keyword">yield</span> <span class="string">"程序员最帅"</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 函数一开始调用是不会执行的 第一次执行返回的是一个指针对象</span></span><br><span class="line"><span class="keyword">let</span> generator = myGenerator()</span><br><span class="line"><span class="built_in">console</span>.log(generator.next()) <span class="comment">// 开始执行 &#123; value : "Hello Wrold" , done : false&#125;</span></span><br><span class="line"><span class="comment">// generator对象看到yield的时候就会暂停 不会再执行后面的代码 再次开启的方式就是使用next</span></span><br><span class="line"><span class="built_in">console</span>.log(generator.next(<span class="string">"嘿嘿嘿"</span>)) <span class="comment">// 暂停之后再次执行 &#123; value : "程序员最帅" , done : false&#125;</span></span><br></pre></td></tr></table></figure>
+<p>我们学习<code>Promise</code>的时候我们知道<code>Promise</code>并不能真正的解决回调地狱的问题 所以ES6提出了<code>Generator</code>函数的概念 这个函数只是比Promise高级一点点 但是还是没有脱离回调函数的问题 下面会介绍一个更完美解决回调函数的问题</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 使用Generator封装多次发送ajax请求数据 并且第二次发送的ajax请求依赖于第一次的数据</span></span><br><span class="line"><span class="comment">// 封装一个get请求</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">get</span>(<span class="params">url</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> xhr = <span class="built_in">window</span>.XMLHttpRequest ? <span class="keyword">new</span> XMLHttpRequest() : <span class="keyword">new</span> ActiveXObject(<span class="string">"MicrosoftXMLHTTP"</span>)</span><br><span class="line">  xhr.onreadystatechange = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (xhr.readyState == <span class="number">4</span> &amp;&amp; xhr.status == <span class="number">200</span>) &#123;</span><br><span class="line">      <span class="keyword">let</span> newUrl = xhr.responseText.newUrl</span><br><span class="line">      <span class="comment">// 发送第二次请求</span></span><br><span class="line">      getDataGeneratorObj.next(newUrl)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  xhr.open(<span class="string">"GET"</span>, url, <span class="literal">true</span>)</span><br><span class="line">  xhr.send()</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span>* <span class="title">getDataGenerator</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="comment">// ret = newUrl</span></span><br><span class="line">  <span class="keyword">let</span> ret = <span class="keyword">yield</span> get(<span class="string">"http://localhost:5000/getData"</span>)</span><br><span class="line">  <span class="keyword">yield</span> get(ret)</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> getDataGeneratorObj = getDataGenerator()</span><br><span class="line"><span class="comment">// 发送第一次请求</span></span><br><span class="line">getDataGeneratorObj.next()</span><br></pre></td></tr></table></figure>
+<h2 id="async函数"><a href="#async函数" class="headerlink" title="async函数"></a><code>async</code>函数</h2><p><code>async</code>的本质是<code>Generator</code>的语法糖(在原有的基础上变得更好更完善)</p>
+<p>特点:</p>
+<ol>
+<li>不需要想<code>Generator</code>去调用next方法,遇到<code>await</code>等待,当前的异步操作完成就往下执行</li>
+<li>返回的总是<code>Promise</code>对象,可以用<code>then</code>方法进行下一步操作</li>
+<li><code>async</code>取代<code>Generator</code>函数的<code>*</code>,<code>await</code>取代<code>Generator</code>的<code>yeild</code></li>
+<li>语义上更为明确,使用简单,非常完美,没有其他的问题</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// async的基本使用 一定要配合Promise使用 否则无法达到我们预期的效果 就是异步执行的效果</span></span><br><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="keyword">new</span> <span class="built_in">Date</span>())</span><br><span class="line">  <span class="keyword">let</span> ret = <span class="keyword">await</span> <span class="built_in">Promise</span>.resolve(data)</span><br><span class="line">  <span class="built_in">console</span>.log(ret) <span class="comment">// ret是resolve传递过来的data</span></span><br><span class="line">  <span class="built_in">console</span>.log(<span class="keyword">new</span> <span class="built_in">Date</span>())</span><br><span class="line">  <span class="comment">// 可以发现两个输出相差的是2s的时候</span></span><br><span class="line">&#125;</span><br><span class="line">test()</span><br></pre></td></tr></table></figure>
+<p>接下来使用<code>async</code>的方法封装一个多次调用<code>ajax</code>的方法 并且后面一次调用的时候依赖于前面一次获取到的数据 下面的这个方法可以完美的解决回调的问题</p>
+<pre><code class="js"><span class="comment">// 使用async解决多次回调问题</span>
+<span class="comment">// 使用Promise封装一个get请求</span>
+<span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">get</span>(<span class="params">url, callback</span>) </span>{
+  <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> {
+    <span class="keyword">let</span> xhr = <span class="built_in">window</span>.XMLHttpRequest ? <span class="keyword">new</span> XMLHttpRequest() : <span class="keyword">new</span> ActiveXObject(<span class="string">"MicrosoftXMLHTTP"</span>)
+  xhr.onreadystatechange = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>{
+      <span class="keyword">if</span> (xhr.readyState == <span class="number">4</span>) {
+        <span class="keyword">if</span> (xhr.status == <span class="number">200</span>) {
+          resolve(xhr.responseText)
+        } <span class="keyword">else</span> {
+          resolve(<span class="literal">false</span>)
+        }
+      }
+    }
+    xhr.open(<span class="string">"GET"</span>, url, <span class="literal">true</span>)
+    xhr.send()
+  })
+}
+<span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">asyncGetData</span>(<span class="params"></span>) </span>{
+  <span class="comment">// ret=xhr.responseText.newUrl</span>
+  <span class="keyword">let</span> viewList = <span class="keyword">await</span> get(<span class="string">"http://local1host:5000/getlunbo"</span>)
+  <span class="keyword">if</span> (!viewList) {
+    alert(<span class="string">"没有更多的数据获取"</span>)
+    <span class="keyword">return</span> <span class="literal">false</span>
+  }
+  <span class="comment">// 第一次请求的逻辑可以在这里写</span>
+  <span class="keyword">let</span> commentList = <span class="keyword">await</span> get(<span class="string">"http://localhost:5000/getnewslist"</span>)
+  <span class="comment">// 第二次请求的逻辑可以在这里</span>
+}
+asyncGetData()
+</code></pre>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    Jen-gui Chow
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://zrg15202041724.github.io/2019/01/05/ES6介绍之处理异步回调地狱/#more" title="ES6介绍之处理异步回调地狱">https://zrg15202041724.github.io/2019/01/05/ES6介绍之处理异步回调地狱/#more</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/ES6介绍之处理异步回调地狱/" rel="tag"># ES6介绍之处理异步回调地狱</a>
+          
+        </div>
+      
+
+      
+      
+        <div class="post-widgets">
+        
+
+        
+          <div class="social-like">
+            
+
+            
+              <div class="fb_like">
+                <div class="fb-like" data-layout="button_count" data-share="true"></div>
+              </div>
+            
+          </div>
+        
+
+        
+          
+            <span class="post-meta-divider">|</span>
+          
+          <div id="needsharebutton-postbottom">
+            <span class="btn">
+              <i class="fa fa-share-alt" aria-hidden="true"></i>
+            </span>
+          </div>
+        
+        </div>
+      
+      
+
+      
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/01/05/ES6介绍之基本的语法/#more" rel="next" title="ES6介绍之基本的语法">
+                <i class="fa fa-chevron-left"></i> ES6介绍之基本的语法
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/01/05/ES6介绍之基本的语法/#more" rel="prev" title="ES6提供的方法介绍">
+                ES6提供的方法介绍 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+              </div>
+              
+
+
+              
+
+  
+    <div class="comments" id="comments">
+      
+        <div id="gitment-container"></div>
+      
+    </div>
+
+  
+
+
+
+            </div>
+          </div>
+        </main>
+
+        <footer id="footer" class="footer">
+          <div class="footer-inner">
+            <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jen-gui Chow</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">21.6k</span>
+  
+</div>
+
+
+
+
+
+
+
+            
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+            
+          </div>
+        </footer>
+      </div>
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+      
+        <div id="needsharebutton-float">
+          <span class="btn">
+            <i class="fa fa-share-alt" aria-hidden="true"></i>
+          </span>
+        </div>
+      
+    </div>
+    <div class="audio-box">
+        <div class="audio-container">
+            <div class="audio-cover"></div>
+            <div class="audio-view">
+                <h3 class="audio-title">未知歌曲</h3>
+                <div class="audio-body">
+                    <div class="audio-backs">
+                        <div class="audio-this-time">00:00</div>
+                        <div class="audio-count-time">00:00</div>
+                        <div class="audio-setbacks">
+                            <i class="audio-this-setbacks">
+								<span class="audio-backs-btn"></span>
+							</i>
+                            <span class="audio-cache-setbacks">
+							</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="audio-btn">
+                    <div class="audio-select">
+                        <div class="audio-prev"></div>
+                        <div class="audio-play"></div>
+                        <div class="audio-next"></div>
+                        <div class="audio-menu"></div>
+                        <div class="audio-volume"></div>
+                    </div>
+                    <div class="audio-set-volume">
+                        <div class="volume-box">
+                            <i><span></span></i>
+                        </div>
+                    </div>
+                    <div class="audio-list">
+                        <div class="audio-list-head">
+                            <p>☺随心听</p>
+                            <span class="menu-close">关闭</span>
+                        </div>
+                        <ul class="audio-inline">
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+    
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+    
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+    
+    
+    
+    
+<script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+  
+  <script>
+    $(function(){
+      $(".site-overview-wrap").css({
+        opacity:1,
+        transform:"translateY(0px)"
+      })
+      $(".post-block").css({
+        opacity:1,
+        transform:"translateX(0px)"
+      })
+      if(window.location.hash == "#more"){
+        $(".post-block").css("height","100%").css("margin","40px 0")
+        $(".sidebar-toggle").css("display","none")
+      }
+    })
+  </script>
+
+
+    
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+    
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+
+
+    
+
+    
+
+    
+
+    
+  
+  
+  <link rel="stylesheet" href="/lib/needsharebutton/needsharebutton.css">
+
+  
+  
+  <script src="/lib/needsharebutton/needsharebutton.js"></script>
+
+  <script>
+    
+      pbOptions = {};
+      
+          pbOptions.iconStyle = "box";
+      
+          pbOptions.boxForm = "horizontal";
+      
+          pbOptions.position = "bottomCenter";
+      
+          pbOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-postbottom', pbOptions);
+    
+    
+      flOptions = {};
+      
+          flOptions.iconStyle = "box";
+      
+          flOptions.boxForm = "horizontal";
+      
+          flOptions.position = "middleRight";
+      
+          flOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-float', flOptions);
+    
+  </script>
+
+    
+
+    
+
+    
+  <script type="text/javascript" src="/js/src/js.cookie.js?v=5.1.4"></script>
+  <script type="text/javascript" src="/js/src/scroll-cookie.js?v=5.1.4"></script>
+
+
+    
+
+  
+</body>
+</html>
